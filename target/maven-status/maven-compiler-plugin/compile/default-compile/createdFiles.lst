@@ -1,0 +1,7 @@
+de/jlo/talendcomp/hac/query2impex/TypeUtil.class
+de/jlo/talendcomp/hac/query2impex/GenericDateUtil.class
+de/jlo/talendcomp/hac/query2impex/BasicDataType.class
+de/jlo/talendcomp/hac/query2impex/SeparatedColumnConfig.class
+de/jlo/talendcomp/hac/query2impex/QueryRunner.class
+de/jlo/talendcomp/hac/query2impex/CSVColumnConfig.class
+de/jlo/talendcomp/hac/query2impex/GenericDateUtil$DateParser.class
