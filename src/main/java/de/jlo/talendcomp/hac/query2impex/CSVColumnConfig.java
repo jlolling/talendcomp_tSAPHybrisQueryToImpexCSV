@@ -4,7 +4,7 @@ public class CSVColumnConfig {
 
 	private String columnName = null;
 	private int position = 0;
-	private int sqlType = 0;
+	private String type = null;
 	private BasicDataType basicType = null; 
 	
 	public String getColumnName() {
@@ -19,12 +19,12 @@ public class CSVColumnConfig {
 	public void setPosition(int position) {
 		this.position = position;
 	}
-	public int getSqlType() {
-		return sqlType;
+	public String getDBType() {
+		return type;
 	}
-	public void setSqlType(int sqlType) {
-		this.sqlType = sqlType;
-		basicType = BasicDataType.getBasicTypeByTypeObjects(sqlType);
+	public void setDBType(String type) {
+		this.type = type;
+		basicType = BasicDataType.getBasicTypeObjectByName(type);
 	}
 	
 	public boolean isString() {
@@ -68,7 +68,7 @@ public class CSVColumnConfig {
 	
 	@Override
 	public String toString() {
-		return "column=" + columnName + " position=" +position + " type=" + sqlType + " basic-type=" + basicType;
+		return "column=" + columnName + " position=" +position + " db-type=" + type + " basic-type=" + basicType;
 	}
 
 }

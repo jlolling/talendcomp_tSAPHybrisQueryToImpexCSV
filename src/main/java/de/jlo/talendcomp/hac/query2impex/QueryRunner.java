@@ -45,13 +45,12 @@ public class QueryRunner {
 		return false;
 	}
 	
-	private void addCSVColumnConfig(String column, int position, int type) {
+	private void addCSVColumnConfig(String column, int position, String type) {
 		CSVColumnConfig c = new CSVColumnConfig();
 		c.setColumnName(column);
 		c.setPosition(position);
-		c.setSqlType(type);
+		c.setDBType(type);
 		listCSVColumns.add(c);
-		//System.out.println(c);
 	}
 	
 	public void executeQuery(String query) throws Exception {
@@ -80,8 +79,9 @@ public class QueryRunner {
 				rsColumn = rsmd.getColumnName(i);
 			}
 			int type = rsmd.getColumnType(i);
+			String typeName = rsmd.getColumnTypeName(i);
 			if (excludeColumnFromCSV(rsColumn) == false) {
-				addCSVColumnConfig(rsColumn, i, type);
+				addCSVColumnConfig(rsColumn, i, typeName);
 			}
 		}
 	}
@@ -108,7 +108,7 @@ public class QueryRunner {
 						String value = rs.getString(conf.getPosition());
 						if (TypeUtil.isEmpty(value) == false) {
 							csvLine.append("\"");
-							csvLine.append(value);
+							csvLine.append(value.replace("\"", "\"\""));
 							csvLine.append("\"");
 						}
 					}
