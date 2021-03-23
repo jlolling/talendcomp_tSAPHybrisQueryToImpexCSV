@@ -26,6 +26,7 @@ public class QueryRunner {
 	private StringBuilder csvLine = new StringBuilder();
 	private String datePattern = "yyyy-MM-dd";
 	private SimpleDateFormat sdf = new SimpleDateFormat(datePattern);
+	private int fetchSize = 10000;
 	
 	public void addSeparatedColumn(String name, Boolean excluded) {
 		SeparatedColumnConfig sc = new SeparatedColumnConfig();
@@ -66,9 +67,11 @@ public class QueryRunner {
 		}
 		conn.setAutoCommit(true);
 		stat = conn.createStatement();
+		stat.setFetchSize(fetchSize);
 		resultset = null;
 		try {
 			resultset = stat.executeQuery(query);
+			resultset.setFetchSize(fetchSize);
 		} catch (Exception e) {
 			throw new Exception("Execute query failed: " + e.getMessage() + " query: \n" + query, e);
 		}
@@ -78,7 +81,6 @@ public class QueryRunner {
 			if (rsColumn == null) {
 				rsColumn = rsmd.getColumnName(i);
 			}
-			int type = rsmd.getColumnType(i);
 			String typeName = rsmd.getColumnTypeName(i);
 			if (excludeColumnFromCSV(rsColumn) == false) {
 				addCSVColumnConfig(rsColumn, i, typeName);
@@ -223,5 +225,15 @@ public class QueryRunner {
 
 	public void setConnection(Connection conn) {
 		this.conn = conn;
+	}
+
+	public int getFetchSize() {
+		return fetchSize;
+	}
+
+	public void setFetchSize(Integer fetchSize) {
+		if (fetchSize != null) {
+			this.fetchSize = fetchSize;
+		}
 	}
 }

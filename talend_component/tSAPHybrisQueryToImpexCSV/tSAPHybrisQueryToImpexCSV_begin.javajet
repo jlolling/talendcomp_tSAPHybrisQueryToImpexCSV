@@ -34,6 +34,10 @@
     String connectionName = ElementParameterParser.getValue(node, "__CONNECTION__");
     List<Map<String, String>> configList = (List<Map<String,String>>) ElementParameterParser.getObjectValue(node, "__COLUMN_CONFIG__");
 	String csvColumn = ElementParameterParser.getValue(node, "__CSV_COLUMN__");
+	String fetchSize = ElementParameterParser.getValue(node, "__FETCH_SIZE__");
+	if (fetchSize == null || fetchSize.trim().isEmpty()) {
+		fetchSize = "null";
+	}
     String query = ElementParameterParser.getValue(node, "__QUERY__");
     if (query != null) {
 	   query = query.trim().replace("\r", "").replace("\n", "\\n\" +\n\"");
@@ -43,7 +47,8 @@
 %>
 	int nb_line_<%=cid%> = 0;
 	de.jlo.talendcomp.hac.query2impex.QueryRunner <%=cid%> = new de.jlo.talendcomp.hac.query2impex.QueryRunner();
-	// add outgoing schema columns for separate extraction		
+	// add outgoing schema columns for separate extraction	
+	<%=cid%>.setFetchSize(<%=fetchSize%>);
 <%	for (int i = 0; i < listColumns.size(); i++) {
 		IMetadataColumn mc = listColumns.get(i);
 		String name = mc.getLabel();
