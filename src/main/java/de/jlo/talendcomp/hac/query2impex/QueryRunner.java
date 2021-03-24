@@ -52,6 +52,7 @@ public class QueryRunner {
 		c.setPosition(position);
 		c.setDBType(type);
 		listCSVColumns.add(c);
+//		System.out.println(c);
 	}
 	
 	public void executeQuery(String query) throws Exception {
@@ -113,6 +114,8 @@ public class QueryRunner {
 							csvLine.append(value.replace("\"", "\"\""));
 							csvLine.append("\"");
 						}
+					} else {
+						csvLine.append(test.toString());
 					}
 				}
 			} catch (Exception e) {

@@ -209,7 +209,7 @@ public class BasicDataType {
 			return BasicDataType.DOUBLE;
 		} else if (typeName.equals("INT8") || typeName.equals("BIGINT")) {
 			return BasicDataType.LONG;
-		} else if (typeName.equals("INTEGER") || typeName.equals("TINYINT") || typeName.equals("INT4")
+		} else if (typeName.equals("INT") || typeName.equals("TINYINT") || typeName.equals("INT4")
 				|| typeName.equals("INT2") || typeName.equals("SMALLINT")) {
 			return BasicDataType.INTEGER;
 		} else if (typeName.equals("DATE") || typeName.equals("TIME") || typeName.equals("TIMESTAMP")) {
