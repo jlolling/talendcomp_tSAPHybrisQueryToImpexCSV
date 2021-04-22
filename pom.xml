@@ -50,7 +50,7 @@
 				<configuration>
 					<copyFromSourceBaseDir>${project.basedir}/talend_component</copyFromSourceBaseDir>
 					<componentBaseDir>${project.basedir}/talend_component</componentBaseDir>
-					<studioUserComponentFolder>/home/jan-lolling/git/talend_templates/components</studioUserComponentFolder>
+					<studioUserComponentFolder>${custom_component_folder}</studioUserComponentFolder>
 				</configuration>
 				<executions>
 					<execution>
