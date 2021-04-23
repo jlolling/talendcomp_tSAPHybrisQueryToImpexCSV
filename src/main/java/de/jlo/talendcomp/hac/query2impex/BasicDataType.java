@@ -166,10 +166,10 @@ public class BasicDataType {
 		typeName = typeName.toUpperCase();
 		if (typeName.equals("CLOB")) {
 			return BasicDataType.CLOB.getId();
-		} else if ((typeName.indexOf("CHAR") != -1) || typeName.equals("TEXT")) {
+		} else if (typeName.contains("CHAR") || typeName.contains("TEXT")) {
 			return BasicDataType.CHARACTER.getId();
-		} else if ((typeName.indexOf("NUM") != -1) || typeName.equals("FLOAT") || typeName.equals("REAL")
-				|| typeName.equals("DOUBLE") || typeName.equals("DECIMAL")) {
+		} else if (typeName.contains("NUM") || typeName.equals("FLOAT") || typeName.equals("REAL")
+				|| typeName.equals("DOUBLE") || typeName.contains("DEC")) {
 			return BasicDataType.DOUBLE.getId();
 		} else if (typeName.equals("INT8") || typeName.equals("BIGINT")) {
 			return BasicDataType.LONG.getId();
@@ -202,10 +202,10 @@ public class BasicDataType {
 		typeName = typeName.toUpperCase();
 		if (typeName.equals("CLOB")) {
 			return BasicDataType.CLOB;
-		} else if ((typeName.indexOf("CHAR") != -1) || typeName.equals("TEXT")) {
+		} else if (typeName.contains("CHAR") || typeName.contains("TEXT")) {
 			return BasicDataType.CHARACTER;
-		} else if ((typeName.indexOf("NUM") != -1) || typeName.equals("FLOAT") || typeName.equals("REAL")
-				|| typeName.equals("DOUBLE") || typeName.equals("DECIMAL")) {
+		} else if (typeName.contains("NUM") || typeName.equals("FLOAT") || typeName.equals("REAL")
+				|| typeName.equals("DOUBLE") || typeName.contains("DEC")) {
 			return BasicDataType.DOUBLE;
 		} else if (typeName.equals("INT8") || typeName.equals("BIGINT")) {
 			return BasicDataType.LONG;

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.jlo.talendcomp.hac</groupId>
 	<artifactId>jlo-talendcomp-query2impexcsv</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<name>Hybris Query to Impex CSV</name>
 
 	<dependencies>
